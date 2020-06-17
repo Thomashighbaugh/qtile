@@ -19,6 +19,6 @@ run xcape -e "Super_L=Super_L|Control_L|Escape"
 
 ## Compositor
 run picom
-feh --bg-fill .local/share/vice-scheme/Vice-Kali-Yantra-maze-row.png
+feh --bg-fill ~/.local/share/vice-scheme/Vice-Kali-Yantra-maze-row.png
 
 sh ~/.screenlayout/1.sh

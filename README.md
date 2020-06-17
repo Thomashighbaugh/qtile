@@ -5,17 +5,9 @@
 A full-featured, pure-Python tiling window manager
 
 # Features
-
-* Simple, small and extensible. It's easy to write your own layouts,
-  widgets and commands.
-* Configured in Python.
-* Command shell that allows all aspects of Qtile to be managed and
-  inspected.
-* Complete remote scriptability - write scripts to set up workspaces,
-  manipulate windows, update status bar widgets and more.
-* Qtile's remote scriptability makes it one of the most thoroughly
-  unit-tested window managers around.
-
+1. Configured in Python.
+2. Not configured in Lua 
+3. Configured in Python.
 # My Keybindings
 
 The MODKEY is set to the Super key (aka the Windows key).  I try to keep the
@@ -23,8 +15,8 @@ keybindings consistent with all of my window managers.
 
 | Keybinding | Action |
 | :--- | :--- |
-| `MODKEY + RETURN` | opens terminal (alacritty is the terminal but can be easily changed) |
-| `MODKEY + SHIFT + RETURN` | opens run launcher (dmenu is the run launcher but can be easily changed) |
+| `MODKEY + RETURN` | opens terminal |
+| `MODKEY + SHIFT + RETURN` | opens run launcher  |
 | `MODKEY + TAB` | rotates through the available layouts |
 | `MODKEY + SHIFT + c` | closes window with focus |
 | `MODKEY + SHIFT + r` | restarts qtile |

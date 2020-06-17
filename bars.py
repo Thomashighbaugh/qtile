@@ -2,8 +2,20 @@ import os
 from libqtile import layout, bar, widget, hook
 from typing import List  # noqa: F401
 from theme import colors
+import socket
 
-##### WIDGETS #####
+# PROMPT
+prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
+# WIDGETS
+# DEFAULTS
+widget_defaults = dict(
+    font="SF Mono Heavy",
+    fontsize=12,
+    padding=2,
+    background=colors[0]
+)
+extension_defaults = widget_defaults.copy()
+
 
 def init_widgets_list():
     widgets_list = [
@@ -22,7 +34,7 @@ def init_widgets_list():
                         borderwidth=3,
                         active=colors[2],
                         inactive=colors[2],
-                        rounded=False,
+                        rounded=True,
                         highlight_color=colors[1],
                         highlight_method="line",
                         this_current_screen_border=colors[3],
