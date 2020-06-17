@@ -12,29 +12,12 @@ from keys import keys  # NOQA
 from layouts import layout_theme, layouts # NOQA
 from theme import colors  # NOQA
 from bars import init_widgets_list  # NOQA
+from groups import group_names, groups, keys # NOQA
 # DEFINING SOME VARIABLES
 mod = "mod4"  # Sets mod key to SUPER/WINDOWS
 myTerm = "kitty"  # My terminal of choice
 myConfig = "/home/dt/.config/qtile/config.py"  # The Qtile config file location
 # DEFAULT THEME SETTINGS FOR LAYOUTS
-
-
-# GROUPS
-group_names = [("1", {'layout': 'monadtall'}),
-               ("2", {'layout': 'monadtall'}),
-               ("3", {'layout': 'monadtall'}),
-               ("4", {'layout': 'monadtall'}),
-               ("5", {'layout': 'monadtall'}),
-               ("6", {'layout': 'monadtall'}),
-               ("7", {'layout': 'monadtall'}),
-               ("8", {'layout': 'monadtall'}),
-               ("9", {'layout': 'floating'})]
-
-groups = [Group(name, **kwargs) for name, kwargs in group_names]
-
-for i, (name, kwargs) in enumerate(group_names, 1):
-    keys.append(Key([mod], str(i), lazy.group[name].toscreen()))  # Switch to another group
-    keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name)))  # Send current window to another group
 
 ##### DEFAULT WIDGET SETTINGS #####
 widget_defaults = dict(
@@ -86,7 +69,7 @@ if __name__ in ["config", "__main__"]:
     widgets_screen1 = init_widgets_screen1()
     widgets_screen2 = init_widgets_screen2()
 
-##### FLOATING WINDOWS #####
+# FLOATING WINDOWS
 floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'confirm'},
     {'wmclass': 'dialog'},
@@ -112,7 +95,7 @@ if __name__ in ["config", "__main__"]:
     widgets_screen2 = init_widgets_screen2()
 
 
-##### STARTUP APPLICATIONS #####
+# STARTUP APPLICATIONS
 @hook.subscribe.startup_once
 def start_once():
     home = os.path.expanduser('~')
