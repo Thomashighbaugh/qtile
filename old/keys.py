@@ -144,8 +144,12 @@ keys = [
 
 
     # Applications = Windows Key + Fn Function Keys
-    Key([mod, ], "F1",
+    Key([mod, ], "Home",
         lazy.spawn("rofi -dpi  -show drun -theme ~/.config/qtile/rofi/appmenu/rofi.rasi"),
+        desc='Launch App Menu'
+        ),
+    Key([mod, "control" ], "Home",
+        lazy.spawn(".config/qtile/rofi/appmenu/applaunch.sh"),
         desc='Launch App Menu'
         ),
     Key(
@@ -160,7 +164,7 @@ keys = [
     ),
     Key(
         [mod, "control"], "F3",
-        lazy.spawn(myTerm + " -e gksu ranger"),
+        lazy.spawn(myTerm + " -e sudo ranger"),
         desc='lynx browser'
     ),
     Key(
@@ -169,39 +173,29 @@ keys = [
         desc='newsboat'
     ),
     Key(
-        [mod, ], "F4",
+        [mod], "F4",
         lazy.spawn("fa-rofi"),
-        desc='newsboat'
+        desc='Font Awesome Icon Picker'
     ),
     Key(
-        [mod, "mod1"], "r",
-        lazy.spawn(myTerm + " -e rtv"),
-        desc='reddit terminal viewer'
+        [mod], "F5",
+        lazy.spawn(".config/qtile/rofi/network/network.sh"),
+        desc='Network Menu'
     ),
     Key(
-        [mod, "mod1"], "e",
-        lazy.spawn(myTerm + " -e neomutt"),
-        desc='neomutt'
-    ),
-    Key(
-        [mod, "mod1"], "m",
-        lazy.spawn(myTerm + " -e sh ./scripts/toot.sh"),
-        desc='toot mastodon cli'
-    ),
-    Key(
-        [mod, "mod1"], "t",
-        lazy.spawn(myTerm + " -e sh ./scripts/tig-script.sh"),
-        desc='tig'
-    ),
-    Key(
-        [mod, "mod1"], "f",
-        lazy.spawn(myTerm + " -e sh ./.config/vifm/scripts/vifmrun"),
-        desc='vifm'
+        [mod, ], "F6",
+        lazy.spawn(".config/qtile/rofi/power/power.sh"),
+        desc='Font Awesome Icon Picker'
     ),
     Key(
         [mod, "mod1"], "j",
         lazy.spawn(myTerm + " -e joplin"),
         desc='joplin'
+    ),
+    Key(
+        [mod], "Print",
+        lazy.spawn(".config/qtile/rofi/screenshot/screenshot.sh"),
+        desc='print screen'
     ),
 
 ]

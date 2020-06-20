@@ -3,7 +3,6 @@ from libqtile import layout, bar, widget, hook
 from typing import List  # noqa: F401
 from theme import colors
 import socket
-
 # PROMPT
 prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 # WIDGETS

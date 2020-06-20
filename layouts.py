@@ -1,43 +1,98 @@
-from libqtile.config import Group  # NOQA
-from libqtile import layout, bar, widget, hook  # NOQA
-from keys import keys  # NOQA
+from libqtile.layout.max import Max
+from libqtile.layout.zoomy import Zoomy
+from libqtile.layout.stack import Stack
+from libqtile.layout.columns import Columns
+from libqtile.layout.floating import Floating
+from libqtile.layout.xmonad import MonadTall, MonadWide
 
-from theme import colors  # NOQA
-from bars import init_widgets_list  # NOQA
+from layout.stack import StackTall, StackWide
+from layout.xmonad import MonadTall, MonadWide
+from aesthetics import Layout_Aesthetics
 
-layout_theme = {"border_width": 2,
-                "margin": 6,
-                "border_focus": "00caff",
-                "border_normal": "24262d"
-                }
+class Layouts(object):
 
-# THE LAYOUTS
-layouts = [
-    layout.MonadWide(**layout_theme),
-    layout.Bsp(**layout_theme),
-    layout.Stack(stacks=2, **layout_theme),
-    layout.Columns(**layout_theme),
-    layout.RatioTile(**layout_theme),
-    layout.VerticalTile(**layout_theme),
-    layout.Matrix(**layout_theme),
-    layout.Zoomy(**layout_theme),
-    layout.MonadTall(**layout_theme),
-    layout.Max(**layout_theme),
-    layout.Tile(shift_windows=True, **layout_theme),
-    layout.Stack(num_stacks=2),
-    layout.TreeTab(
-        font="SF Mono Heavy",
-        fontsize=13,
-        sections=["FIRST", "SECOND"],
-        section_fontsize=13,
-        bg_color="141414",
-        active_bg="90C435",
-        active_fg="000000",
-        inactive_bg="384323",
-        inactive_fg="a0a0a0",
-        padding_y=5,
-        section_top=10,
-        panel_width=320
-    ),
-    layout.Floating(**layout_theme)
-]
+	theme = Layout_Aesthetics.layout_theme
+
+	##### LAYOUTS #####
+
+	def max(self, name = None):
+		if name is None:
+			return Max(**self.theme)
+
+		return Max(name = name, **self.theme)
+
+	def zoomy(self, name = None):
+		if name is None:
+			return Zoomy(**self.theme)
+
+		return Zoomy(name = name, **self.theme)
+
+	def floating(self, name = None):
+		if name is None:
+			return Floating(**self.theme)
+
+		return Floating(name = name, **self.theme)
+
+	def bsp(self, name = None):
+		if name is None:
+			return BSP(**self.theme)
+
+		return BSP(name = name, **self.theme)
+
+
+	def floating(self, name = None):
+		if name is None:
+			return Floating(**self.theme)
+
+		return Floating(name = name, **self.theme)
+
+	def treetab(self, name = None):
+		if name is None:
+			return TreeTab(**self.theme)
+
+		return TreeTab(name = name, **self.theme)
+
+	def two_stackTall(self, name = None):
+		if name is None:
+			return StackTall(stacks = 2, **self.theme)
+
+		return StackTall(name=name, stacks = 2, **self.theme)
+
+	def two_stackWide(self, name = None):
+		if name is None:
+			return StackWide(stacks = 2, **self.theme)
+		
+		return StackWide(name= name, stacks = 2, **self.theme)
+	
+	def two_stack_new(self, name = None):
+		if name is None:
+			return Columns(num_columns = 2, split = False **self.theme)
+
+		return Columns(name = name, num_columns = 2, split = False **self.theme)
+
+	def monadWide(self, name = None):
+		if name is None:
+			return MonadWide(ratio = 0.5, **self.theme)
+
+		return MonadWide(name = name, ratio = 0.5, **self.theme)
+
+	def ten_monadWide(self, name = None):
+		if name is None:
+			return MonadWide(ratio = 0.6, **self.theme)
+
+		return MonadWide(name = name, ratio = 0.6, **self.theme)
+
+	def monadTall(self, name = None):
+		if name is None:
+			return MonadTall(ratio = 0.5, **self.theme)
+
+		return MonadTall(name = name, ratio = 0.5, **self.theme)
+
+	def five_monadTall(self, name = None):
+		if name is None:
+			return MonadTall(ratio = 0.55, **self.theme)
+
+		return MonadTall(name = name, ratio = 0.55, **self.theme)
+
+
+# vim: tabstop=4 shiftwidth=4 noexpandtab
