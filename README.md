@@ -1,67 +1,45 @@
-osimplex
-========
+# My Qtile Configuration
 
-Description
------------
+![Screenshot of my desktop](https://www.gitlab.com/dwt1/dotfiles/raw/master/.screenshots/dotfiles07.png)
 
-Qtile example configuration with some OOP.
+A full-featured, pure-Python tiling window manager
 
-Features
---------
+# Features
+1. Configured in Python.
+2. Not configured in Lua 
+3. Configured in Python.
+# My Keybindings
 
-Here you will find:
-1. Some custom lazy functions
-1. Default layouts file for groups composition
-1. A custom stackwide layout
-1. Default widget file for easy bar composition
-1. Double and single bar screens, with parameter for systray or no systray
-1. A pure text and a powerline like, now broken, bar (from Derek Taylor)
-1. Aesthetics file were you can define color, font _et cetera_
-	* Put this stuff into aesthetics directory and symlink in configuration root
-1. Scratchpad terminal defined with environment variables
-1. A "minimized" windows group
-1. An autostart script with some suggestions
-1. Some window classes and names on rules and groups files
+The MODKEY is set to the Super key (aka the Windows key).  I try to keep the
+keybindings consistent with all of my window managers.
 
-Required
---------
+| Keybinding | Action |
+| :--- | :--- |
+| `MODKEY + RETURN` | opens terminal |
+| `MODKEY + SHIFT + RETURN` | opens run launcher  |
+| `MODKEY + TAB` | rotates through the available layouts |
+| `MODKEY + SHIFT + c` | closes window with focus |
+| `MODKEY + SHIFT + r` | restarts qtile |
+| `MODKEY + SHIFT + q` | quits qtile |
+| `MODKEY + 1-9` | switch focus to workspace (1-9) |
+| `MODKEY + SHIFT + 1-9` | send focused window to workspace (1-9) |
+| `MODKEY + j` | lazy layout up (switches focus between windows in the stack) |
+| `MODKEY + k` | lazy layout down (switches focus between windows in the stack) |
+| `MODKEY + SHIFT + j` | lazy layout shuffle_up (rotates the windows in the stack) |
+| `MODKEY + SHIFT + k` | lazy layout shuffle_down (rotates the windows in the stack) |
+| `MODKEY + h` | expand size of window (MondadTall layout) |
+| `MODKEY + l` | shrink size of window (MondadTall layout) |
+| `MODKEY + w` | switch focus to monitor 1 |
+| `MODKEY + e` | switch focus to monitor 2 |
+| `MODKEY + r` | switch focus to monitor 3 |
+| `MODKEY + period` | switch focus to next monitor |
+| `MODKEY + comma` | switch focus to prev monitor |
 
-1. A Nerd Font for widgets
-	* Was used Ubuntu Nerd Font for this config
+# Community
 
-Recommended
------------
+Qtile is supported by a dedicated group of users. If you need any help, please
+don't hesitate to fire off an email to our mailing list or join us on IRC.
 
-1. xcb-util-cursor: Without this, your cursor theme will not work as expected
-1. python-psutil: For some widgets
-1. python-setproctitle: Qtile will receive a weird process name after restart
+* Mailing List: http://groups.google.com/group/qtile-dev
+* IRC: irc://irc.oftc.net:6667/qtile
 
-Some stuff in this example
---------------------------
-
-Autostart:
-1. Polkit agent: polkit-gnome
-1. Notification daemon: dunst
-1. Compositor: compton
-1. Wallpaper setter: nitrogen
-1. Hotkeys: sxhkd + Qtile keys
-1. Red screen: redshift
-1. On systray: network-manager-applet, volumeicon
-
-Scratchpad:
-1. Terminal multiplexer: tmux
-1. Music player: mpd + ncmpcpp
-
-Notes
------
-
-1. This config doesn't have no WM related bindings (eg. spawn terminal)
-	* Only on Scratchpad
-1. Update widget was configured for Arch Linux (_pacman-contrib_ checkupdates)
-
-Maybe tomorrow
---------------
-
-1. Dmenu extension not used, but there is a default for this in aesthetics
-1. Powerline like bar
-1. Dynamical layout-based bindings

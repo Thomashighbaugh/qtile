@@ -11,7 +11,7 @@ class Colors(object):
 	magenta =	["#f850ac", "#f850ac"]
 	green =		["#76dcdd", "#76dcdd"]
 	darkgreen =	["#00b6b2", "#00b6b2"]
-	blue =		["#00caff", "#00caff"]
+	blue =		["#00caff", "#6fffff"]
 	darkblue =	["#61aeee", "#61aeee"]
 	orange =	["#f9f871", "#f9f871"]
 
@@ -25,8 +25,8 @@ class Layout_Aesthetics(object):
 	layout_theme = {
 		"margin":			2,
 		"border_width":		2,
-		"border_focus":		Colors.blue[0],
-		"border_normal":	Colors.black[0],
+		"border_focus":		Colors.blue,
+		"border_normal":	Colors.black,
 	}
 
 	floating_layout = Floating(
@@ -38,18 +38,17 @@ class Layout_Aesthetics(object):
 class Widget_Aesthetics(object):
 
 	widget_defaults = dict(
-		font =			Fonts.base,
-		fontsize =		10.5,
-		padding =		2,
-		foreground =	Colors.white,
-		background =	Colors.black
+		font =			Fonts.bold,
+		fontsize =		22,
+		padding = 1,
+		margin = 1,
 	)
 
 class Extension_Aesthetics(object):
 
 	extension_defaults = dict(
-		font =					Fonts.base,
-		fontsize =				12,
+		font =					Fonts.bold,
+		fontsize =				22,
 		dmenu_ignorecase =		True,
 		dmenu_prompt =			">",
 		selected_foreground =	Colors.blue,

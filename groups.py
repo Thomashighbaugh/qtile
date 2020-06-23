@@ -1,166 +1,24 @@
-import re  # NOQA
-from libqtile.config import Group, Match  # NOQA
-from layouts import Layouts  # NOQA
+# IMPORTS
+from libqtile.config import Key, Screen, Group, Drag, Click
+from libqtile.command import lazy
+from libqtile.config import Group  # NOQA
+from libqtile import layout, bar, widget, hook  # NOQA
+from keys import keys  #
+mod = "mod4"  # Sets mod key to SUPER/WINDOWS
 
+# GROUPS
+group_names = [("1", {'layout': 'monadtall'}),
+               ("2", {'layout': 'monadtall'}),
+               ("3", {'layout': 'monadtall'}),
+               ("4", {'layout': 'monadtall'}),
+               ("5", {'layout': 'monadtall'}),
+               ("6", {'layout': 'monadtall'}),
+               ("7", {'layout': 'monadtall'}),
+               ("8", {'layout': 'monadtall'}),
+               ("9", {'layout': 'floating'})]
 
-class Groups(object):
+groups = [Group(name, **kwargs) for name, kwargs in group_names]
 
-    ##### GROUPS #####
-
-    def init_groups(self):
-        layout = Layouts()
-
-        return [
-            Group("1",
-                  layouts=[
-                      layout.max(),
-                      layout.two_stackWide(),
-                      layout.two_stackTall(),
-                      layout.monadWide(),
-                      layout.monadTall(),
-                      layout.two_stackTall(),
-                      layout.monadTall(),
-                      layout.five_monadTall(),
-                      layout.two_stackTall(),
-                      layout.two_stackWide(),
-                      layout.floating()
-                  ]
-                  ),
-            Group("2",
-                  layouts=[
-                      layout.two_stackTall(),
-                      layout.monadTall(),
-                      layout.ten_monadWide(),
-                      layout.two_stackWide(),
-                      layout.two_stackTall(),
-                      layout.monadWide(),
-                      layout.monadTall(),
-                      layout.five_monadTall(),
-                      layout.two_stackTall(),
-                      layout.two_stackWide(),
-                      layout.floating()
-
-                  ],
-                  ),
-            Group("3",
-                  layouts=[
-                      layout.max(),
-                      layout.two_stackWide(),
-                      layout.two_stackTall(),
-                      layout.monadWide(),
-                      layout.monadTall(),
-                      layout.two_stackTall(),
-                      layout.monadTall(),
-                      layout.five_monadTall(),
-                      layout.two_stackTall(),
-                      layout.two_stackWide(),
-                      layout.floating()
-                  ],
-                  ),
-            Group("4",
-                  layouts=[
-                      layout.max(),
-                      layout.two_stackWide(),
-                      layout.two_stackTall(),
-                      layout.monadWide(),
-                      layout.monadTall(),
-                      layout.two_stackTall(),
-                      layout.monadTall(),
-                      layout.five_monadTall(),
-                      layout.two_stackTall(),
-                      layout.two_stackWide(),
-                      layout.floating()
-                  ],
-
-                  ),
-            Group("5",
-                  layouts=[
-                      layout.max()
-                  ],
-
-                  ),
-            Group("6",
-                  layouts=[
-                      layout.max(),
-                      layout.two_stackWide(),
-                      layout.two_stackTall(),
-                      layout.monadWide(),
-                      layout.monadTall(),
-                      layout.two_stackTall(),
-                      layout.monadTall(),
-                      layout.five_monadTall(),
-                      layout.two_stackTall(),
-                      layout.two_stackWide(),
-                      layout.floating()
-                  ]
-                  ),
-            Group("7",
-                  layouts=[
-                      layout.max(),
-                      layout.two_stackWide(),
-                      layout.two_stackTall(),
-                      layout.monadWide(),
-                      layout.monadTall(),
-                      layout.two_stackTall(),
-                      layout.monadTall(),
-                      layout.five_monadTall(),
-                      layout.two_stackTall(),
-                      layout.two_stackWide(),
-                      layout.floating()
-                  ],
-
-                  ),
-            Group("8",
-                  layouts=[
-                      layout.max(),
-                      layout.two_stackWide(),
-                      layout.two_stackTall(),
-                      layout.monadWide(),
-                      layout.monadTall(),
-                      layout.monadTall(),
-                      layout.five_monadTall(),
-                      layout.two_stackTall(),
-                      layout.two_stackWide(),
-                      layout.floating()
-                  ],
-
-                  ),
-            Group("9",
-                  layouts=[
-                      layout.max(),
-                      layout.two_stackWide(),
-                      layout.two_stackTall(),
-                      layout.monadWide(),
-                      layout.monadTall(),
-                      layout.two_stackTall(),
-                      layout.monadTall(),
-                      layout.five_monadTall(),
-                      layout.two_stackTall(),
-                      layout.two_stackWide(),
-                      layout.floating()
-                  ],
-
-                  ),
-            Group("0",
-                  layouts=[
-                      layout.max(),
-                      layout.two_stackWide(),
-                      layout.two_stackTall(),
-                      layout.monadWide(),
-                      layout.monadTall(),
-                      layout.two_stackTall(),
-                      layout.monadTall(),
-                      layout.five_monadTall(),
-                      layout.two_stackTall(),
-                      layout.two_stackWide(),
-                      layout.floating()
-                  ],
-                  ),
-            Group("",
-                  layouts=[
-                      layout.floating()
-                  ]
-                  )
-        ]
-
-# vim: tabstop=4 shiftwidth=4 noexpandtab
+for i, (name, kwargs) in enumerate(group_names, 1):
+    keys.append(Key([mod], str(i), lazy.group[name].toscreen()))  # Switch to another group
+    keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name)))  # Send current window to another group
