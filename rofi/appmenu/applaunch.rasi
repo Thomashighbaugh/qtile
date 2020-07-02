@@ -21,22 +21,22 @@
     color6:      #00eaff;
     color14:     #6FFFFF;
     // white
-    color7:       #e9e9ff;
+    color7:       #f9f9f9;
     color15:      #edeeff;
     //alt black
     color16: #24262D;
     red:                         @color1;
     blue:                        @color6;
-    lightfg:                     #e5e5e9;
-    lightbg:                     @color16;
-    foreground:                  #edeeff;
-    background:                  #17161B;
-    background-color:            @color0;
-    accent:                      @blue;
+    lightfg:                     @color8;
+    lightbg:                     @1e2026;
+    foreground:                  @color8;
+    background:                  #1e2026;
+    background-color:            #1e2026;
+    accent:                      @color15;
     accent1:                     @red;
     separatorcolor:              @foreground;
     border-color:                @foreground;
-    selected-normal-foreground:  @lightbg;
+    selected-normal-foreground:  @color8;
     selected-normal-background:  @lightfg;
     selected-active-foreground:  @background;
     selected-active-background:  @blue;
@@ -57,7 +57,7 @@
 
 }
 window {
-    background-color: #17161B;
+    background-color: #1e2026;
 }
 message {
     border-color:     @foreground;
@@ -70,7 +70,7 @@ listview {
     border-radius:    25px;
 }
 element normal.normal {
-    background-color: @normal-background;
+    background-color: @background;
     text-color:       @normal-foreground;
 }
 element normal.urgent {
@@ -120,7 +120,7 @@ button {
     text-color:       @normal-foreground;
 }
 button selected {
-    background-color: @selected-normal-background;
+    background-color: @background;
     text-color:       @selected-normal-foreground;
 }
 inputbar {
@@ -142,7 +142,7 @@ prompt {
   icon-font:                            "FontAwesome Regular 45";
   
   option-6-listview-spacing:            15px;
-  menu-window-padding:                  6px 6px;
+  menu-window-padding:                  26px 6px;
   menu-element-padding:                 5px 5px 0px 1.754%;
 }
 

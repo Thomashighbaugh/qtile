@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Qtile
-Comment=Qtile Session
+Comment=Because Awesome WM wasn't enough of a pain in the ass, here's qtile.
 Exec=qtile
 TryExec=qtile
 Type=Application

@@ -11,7 +11,7 @@ from libqtile import layout, bar, widget, hook  # NOQA
 from keys import keys  # NOQA
 from layouts import layout_theme, layouts  # NOQA
 from theme import colors  # NOQA
-from bars import init_widgets_list  # NOQA
+from bars import init_widgets_list, init_widgets_list2  # NOQA
 from groups import group_names, groups, keys  # NOQA
 
 # DEFINING SOME VARIABLES
@@ -22,8 +22,8 @@ myConfig = "/home/dt/.config/qtile/config.py"  # The Qtile config file location
 
 ##### DEFAULT WIDGET SETTINGS #####
 widget_defaults = dict(
-    font="SF Mono Heavy",
-    fontsize=12,
+    font="San Francisco Display Heavy",
+    fontsize=18,
     padding=2,
     background=colors[0]
 )
@@ -40,7 +40,7 @@ mouse = [
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
-# main = None
+main = None
 follow_mouse_focus = True
 bring_front_click = True
 cursor_warp = False
@@ -54,14 +54,17 @@ def init_widgets_screen1():
 
 
 def init_widgets_screen2():
-    widgets_screen2 = init_widgets_list()
+    widgets_screen2 = init_widgets_list2()
     return widgets_screen2  # Monitor 2 will display all widgets in widgets_list
 
 
 def init_screens():
-    return [Screen(bottom=bar.Bar(widgets=init_widgets_screen1(), opacity=0.95, size=36)),
-            Screen(bottom=bar.Bar(widgets=init_widgets_screen2(), opacity=0.95, size=36)),
-            Screen(bottom=bar.Bar(widgets=init_widgets_screen1(), opacity=0.95, size=36))]
+    return [Screen(bottom=bar.Bar(widgets=init_widgets_screen1(), opacity=0.95, size=36),
+        top=bar.Bar(widgets=init_widgets_screen2(), opacity=0.95, size=36)),
+            Screen(bottom=bar.Bar(widgets=init_widgets_screen1(), opacity=0.95, size=36),
+                top=bar.Bar(widgets=init_widgets_screen2(), opacity=0.95, size=36)),
+            Screen(bottom=bar.Bar(widgets=init_widgets_screen1(), opacity=0.95, size=36),
+                top=bar.Bar(widgets=init_widgets_screen2(), opacity=0.95, size=36))]
 
 
 if __name__ in ["config", "__main__"]:

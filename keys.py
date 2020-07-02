@@ -81,9 +81,7 @@ keys = [
     Key([mod], "m",
         lazy.layout.next()),  # Move focus to another stack (Stack)
 
-    Key([mod], "h", lazy.layout.shrink()),  # Shrink size of window (Xmonad)
-    Key([mod], "l", lazy.layout.grow()),  # Grow size of window (Xmonad)
-
+ 
     Key([mod, "shift"], "Down",
         lazy.layout.decrease_nmaster(),           # Decrease number in master pane (Tile)
         lazy.layout.shrink_main()),  # Shrink size of main window (Xmonad)

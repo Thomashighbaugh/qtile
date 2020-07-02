@@ -20,13 +20,13 @@ case $chosen in
         kitty &
         ;;
     $files)
-        pcmanfm &
+        thunar &
         ;;
     $editor)
-        gedit &
+        subl &
         ;;
     $browser)
-        firefox-developer-edition &
+        firefox &
         ;;
     $music)
         spotify &
