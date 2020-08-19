@@ -3,7 +3,7 @@ configuration {
     drun-display-format: "{icon} {name}";
     display-drun: "Apps";
     show-icons: true;
-    icon-theme: "Flatery Sky Dark";
+    icon-theme: "Flatery Dark";
     location: 1;
     yoffset: 0;
     xoffset: 0;
@@ -27,21 +27,22 @@ configuration {
 
 // black
    * {
-       bg:  #1e2026;
-       bg-sel: #17161b;
-       fg: #ebf0f8;
+       bg:  #282a33;
+       bg-sel: #000;
+       fg: #ddd;
+
    }
 
 
 
 * {
     background-color: #00000000;
-    font: "Troika Regular 18";
+    font: "League Mono Bold 12";
 }
 
 window {
     height: 100%;
-    width: 15%;
+    width: 19%;
     transparency: "real";
 }
 
@@ -63,9 +64,9 @@ listview {
 
 element {
     border: 0;
-    text-color: #24262d;
+    text-color: @white;
     orientation: vertical;
-    padding: 12 12 12 12;
+    padding: 0;
     border-radius: 0;
 }
 
@@ -83,7 +84,6 @@ inputbar {
     border: 0 0 0 0;
     border-color: @fg;
     border-radius: 0;
-    text-color:#00caff;
 }
 
 prompt {
