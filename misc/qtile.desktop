@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Qtile
-Comment=Because Awesome WM wasn't enough of a pain in the ass, here's qtile.
-Exec=qtile
-TryExec=qtile
-Type=Application
-X-LightDM-DesktopName=qtile
-DesktopNames=qtile
-Keywords=tiling;wm;windowmanager;window;manager;

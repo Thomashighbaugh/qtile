@@ -1,45 +1,83 @@
-# My Qtile Configuration
+# Qtile
 
-![Screenshot of my desktop](https://www.gitlab.com/dwt1/dotfiles/raw/master/.screenshots/dotfiles07.png)
+![Qtile](../../.screenshots/qtile.png)
 
-A full-featured, pure-Python tiling window manager
+***Language***
+- [🇪🇸 Español](./README.es.md)
+- 🇺🇸 English
 
-# Features
-1. Configured in Python.
-2. Not configured in Lua 
-3. Configured in Python.
-# My Keybindings
+## Installation (Arch based)
 
-The MODKEY is set to the Super key (aka the Windows key).  I try to keep the
-keybindings consistent with all of my window managers.
+Install Qtile and dependencies:
 
-| Keybinding | Action |
-| :--- | :--- |
-| `MODKEY + RETURN` | opens terminal |
-| `MODKEY + SHIFT + RETURN` | opens run launcher  |
-| `MODKEY + TAB` | rotates through the available layouts |
-| `MODKEY + SHIFT + c` | closes window with focus |
-| `MODKEY + SHIFT + r` | restarts qtile |
-| `MODKEY + SHIFT + q` | quits qtile |
-| `MODKEY + 1-9` | switch focus to workspace (1-9) |
-| `MODKEY + SHIFT + 1-9` | send focused window to workspace (1-9) |
-| `MODKEY + j` | lazy layout up (switches focus between windows in the stack) |
-| `MODKEY + k` | lazy layout down (switches focus between windows in the stack) |
-| `MODKEY + SHIFT + j` | lazy layout shuffle_up (rotates the windows in the stack) |
-| `MODKEY + SHIFT + k` | lazy layout shuffle_down (rotates the windows in the stack) |
-| `MODKEY + h` | expand size of window (MondadTall layout) |
-| `MODKEY + l` | shrink size of window (MondadTall layout) |
-| `MODKEY + w` | switch focus to monitor 1 |
-| `MODKEY + e` | switch focus to monitor 2 |
-| `MODKEY + r` | switch focus to monitor 3 |
-| `MODKEY + period` | switch focus to next monitor |
-| `MODKEY + comma` | switch focus to prev monitor |
+```
+sudo pacman -S qtile pacman-contrib
+yay -S nerd-fonts-ubuntu-mono
+pip install psutil
+```
 
-# Community
+Clone this repository and copy my configs:
 
-Qtile is supported by a dedicated group of users. If you need any help, please
-don't hesitate to fire off an email to our mailing list or join us on IRC.
+```bash
+git clone https://github.com/antoniosarosi/dotfiles.git
+cp -r dotfiles/.config/qtile ~/.config
+```
 
-* Mailing List: http://groups.google.com/group/qtile-dev
-* IRC: irc://irc.oftc.net:6667/qtile
+Test it with **[Xephyr](https://wiki.archlinux.org/index.php/Xephyr)**:
 
+```bash
+Xephyr -br -ac -noreset -screen 1280x720 :1 &
+DISPLAY=:1 qtile
+```
+
+If the network widget doesn't work check ```./settings/widgets.py``` and look
+for this line, you should find it inside a list called *primary_widgets*:
+
+```python
+# Change interface arg, use ip address to find which one you need
+ widget.Net(**base(bg='color3'), interface='wlp2s0'),
+```
+
+Once that's done, you can login. But keep in mind keybindings will not work
+unless you have the same programs that I use and the same configs. You can
+either change keybindings or install the software I use and my config files,
+check out [this section](https://github.com/antoniosarosi/dotfiles#keybindings)
+for instructions.
+
+## Structure
+
+In ```config.py```, which is the file where most people write all their config,
+I only have an *autostart* function and some other variables like
+*cursor_warp*.
+
+```python
+@hook.subscribe.startup_once
+def autostart():
+    subprocess.call([path.join(qtile_path, 'autostart.sh')])
+```
+
+If you want to change *autostart* programs, open  ```./autostart.sh```.
+
+```bash
+#!/bin/sh
+
+# systray battery icon
+cbatticon -u 5 &
+# systray volume
+volumeicon &
+```
+
+If you want to modify keybindings, open ```./settings/keys.py```. To modify
+workspaces, use ```./settings/groups.py```. Finally, if you want to add more
+layouts, check ```./settings/layouts.py```, the rest of files don't need any
+configuration.
+
+## Themes
+
+To set a theme, check which ones are available in ```./themes```, and write
+the name of the theme you want in a file named ```./config.json```:
+
+```json
+{
+    "theme": "material-ocean"
+}

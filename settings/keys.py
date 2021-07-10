@@ -10,11 +10,11 @@ from libqtile import layout, bar, widget, hook
 
 mod = "mod4"  # Sets mod key to SUPER/WINDOWS
 myTerm = "kitty"  # My terminal of choice
-myConfig = "/home/dt/.config/qtile/config.py"  # The Qtile config file location
+myConfig = "/home/tlh/.config/qtile/config.py"  # The Qtile config file location
 
 ##### KEYBINDINGS #####
 keys = [
-    ### The essentials
+    # The essentials
     Key(
         [mod], "Return",
         lazy.spawn(myTerm),
@@ -22,7 +22,8 @@ keys = [
     ),
     Key(
         [mod, "shift"], "Return",
-        lazy.spawn("rofi -show drun -theme ~/.config/qtile/rofi/appmenu/rofi.rasi 'Run: '"),
+        lazy.spawn(
+            "rofi -show drun -theme ~/.config/qtile/rofi/appmenu/rofi.rasi 'Run: '"),
         desc='Dmenu Run Launcher'
     ),
     Key(
@@ -31,7 +32,7 @@ keys = [
         desc='Toggle through layouts'
     ),
     Key(
-        [mod, "shift"], "c",
+        [mod, ], "x",
         lazy.window.kill(),
         desc='Kill active window'
     ),
@@ -45,7 +46,7 @@ keys = [
         lazy.shutdown(),
         desc='Shutdown Qtile'
     ),
-    ### Switch focus to specific monitor (out of three)
+    # Switch focus to specific monitor (out of three)
     Key([mod, "shift"], "w",
         lazy.to_screen(0),
         desc='Keyboard focus to monitor 1'
@@ -124,7 +125,7 @@ keys = [
         lazy.window.toggle_floating(),
         desc='toggle floating'
     ),
-   # Stack controls
+    # Stack controls
     Key(
         [mod, "shift"], "space",
         lazy.layout.rotate(),
@@ -145,16 +146,17 @@ keys = [
 
     # Applications = Windows Key + Fn Function Keys
     Key([mod, ], "Home",
-        lazy.spawn("rofi -dpi  -show drun -theme ~/.config/qtile/rofi/appmenu/rofi.rasi"),
+        lazy.spawn(
+            "rofi -dpi  -show drun -theme ~/.config/qtile/rofi/appmenu/rofi.rasi"),
         desc='Launch App Menu'
         ),
-    Key([mod, "control" ], "Home",
+    Key([mod, "control"], "Escape",
         lazy.spawn(".config/qtile/rofi/appmenu/applaunch.sh"),
         desc='Launch App Menu'
         ),
     Key(
         [mod, ], "F2",
-        lazy.spawn("firefox-developer-edition"),
+        lazy.spawn("firefox"),
         desc='Browser'
     ),
     Key(
@@ -183,14 +185,14 @@ keys = [
         desc='Network Menu'
     ),
     Key(
-        [mod, ], "F6",
+        [mod, ], "Escape",
         lazy.spawn(".config/qtile/rofi/power/power.sh"),
         desc='Font Awesome Icon Picker'
     ),
     Key(
-        [mod, "mod1"], "j",
-        lazy.spawn(myTerm + " -e joplin"),
-        desc='joplin'
+        [mod, "mod1"], "F6",
+        lazy.spawn(myTerm + " -e nvim"),
+        desc='nvim'
     ),
     Key(
         [mod], "Print",
@@ -199,3 +201,21 @@ keys = [
     ),
 
 ]
+
+    # ------------ Hardware Configs ------------
+
+    # # Volume
+    # ([], "XF86AudioLowerVolume", lazy.spawn(
+    #     "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+    # )),
+    # ([], "XF86AudioRaiseVolume", lazy.spawn(
+    #     "pactl set-sink-volume @DEFAULT_SINK@ +5%"
+    # )),
+    # ([], "XF86AudioMute", lazy.spawn(
+    #     "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    # )),
+
+    # # Brightness
+    # ([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +10%")),
+    # ([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-")),
+
